@@ -1,73 +1,61 @@
-# Welcome to your Lovable project
+📌 Features
 
-## Project info
+- 🔐 Secure user authentication using JWT
+- 🧾 Add, edit, and delete income & expense records
+- 📊 Interactive dashboard with charts (Income vs Expense, Category-wise)
+- 📩 Gmail integration (OAuth 2.0) to auto-detect transactions from emails
+- 🔁 Auto-refresh dashboard (every 1 minute)
+- 📤 Export transaction reports as CSV
+- 🧠 Duplicate transaction prevention
+- ☁️ Cloud-based database using MongoDB Atlas
 
-**URL**: https://lovable.dev/projects/c1458918-42df-4c6a-91a7-45003b6ad1d2
 
-## How can I edit this code?
 
-There are several ways of editing your application.
+🛠️ Technology Stack
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/c1458918-42df-4c6a-91a7-45003b6ad1d2) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
+Frontend
+- React.js (Vite)
 - Tailwind CSS
+- Chart.js
+- Lucide Icons
 
-## How can I deploy this project?
+Backend
+- Node.js
+- Express.js
+- JWT Authentication
+- Node-Cron
 
-Simply open [Lovable](https://lovable.dev/projects/c1458918-42df-4c6a-91a7-45003b6ad1d2) and click on Share -> Publish.
+Database
+- MongoDB Atlas
 
-## Can I connect a custom domain to my Lovable project?
+External APIs
+- Google Gmail API (OAuth 2.0)
 
-Yes, you can!
+🏗️ System Architecture
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- Frontend: React-based UI for authentication, dashboard, expenses & reports  
+- Backend: REST APIs for authentication, transactions & Gmail scanning  
+- Database: MongoDB stores users, transactions & OAuth tokens  
+- Scheduler: Cron job scans Gmail periodically for new transactions  
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+🔐 Authentication & Security
+
+- Password hashing using bcrypt
+- JWT-based secure session handling
+- Protected backend routes with middleware
+- OAuth tokens stored securely on backend
+- No Gmail passwords are stored
+
+📩 Gmail Transaction Detection
+
+- Reads transaction-related emails only
+- Uses keyword detection (debit, credit, spent, received)
+- Extracts:
+  - Amount
+  - Transaction type (Credit/Debit)
+  - Merchant/Description
+- Prevents duplicate entries using compound indexes
+
+> ⚠️ Gmail API is currently in testing mode – only whitelisted email IDs can be used.
